@@ -41,7 +41,9 @@ to keep an old version of the compiler around.
 
 Search google for "download golang".  Go is usually referred to as "golang" when you search for it.
 
-You should find: [https://golang.org/dl/](https://golang.org/dl/).  The page should look like
+You should find:
+[https://go.dev/dl/](https://go.dev/dl/)
+.  The page should look like
 ![Go Download Page](go-download.png)
 
 For Windows there is a `.msi` installer that is very good.  It will automatically install
@@ -103,16 +105,17 @@ Cut and paste - or type in (probably better for you) the following program.   Th
 also on the Go download page.  Put it into a file called `main.go`.
 
 ```Go
-	package main
+  1: package main
+  2: 
+  3: // Your Name - it is important if you want to get credit for your assignment.
+  4: // Assignment 1.2 hello world - This is important too.  If you want credit.`
+  5: 
+  6: import "fmt"
+  7: 
+  8: func main() {
+  9:     fmt.Printf("Hello Wonderful 可笑 幽默 白痴 World\n")
+ 10: }
 
-	// Your Name - it is important if you want to get credit for your assignment.
-	// Assignment 1.2 hello world - This is important too.  If you want credit.
-
-	import "fmt"
-
-	func main() {
-		fmt.Printf("Hello Wonderful World\n")
-	}
 ```
 
 To run it:
@@ -205,27 +208,33 @@ Echo should take the command line arguments (after the 0th one, the name of the 
 Cut and paste the following code.  Get it to run.  Compile with `go build`.   Run it with `go run <your file>.go Arguments`.
 
 ```Go
-	package main
+  1: package main
+  2: 
+  3: // Your Name - it is important if you want to get credit for your assignment.
+  4: // Assignment 1.3 echo command line arguments.
+  5: 
+  6: import (
+  7:     "fmt"
+  8:     "os"
+  9: )
+ 10: 
+ 11: func main() {
+ 12:     ags := os.Args[1:]
+ 13:     //  ^-------------------------- Declare
+ 14:     //     ^----------------------- use "os" package
+ 15:     //        ^-------------------- Command line arguments
+ 16:     //            ^---------------- Arguments are an array
+ 17:     //             ^--- 1: -------- this is a sub-slice of array
+ 18:     for ii, ag := range ags {
+ 19:         if ii < len(ags)-1 {
+ 20:             fmt.Printf("%s ", ag)
+ 21:         } else {
+ 22:             fmt.Printf("%s", ag)
+ 23:         }
+ 24:     }
+ 25:     fmt.Printf("\n")
+ 26: }
 
-	// Your Name - it is important if you want to get credit for your assignment.
-	// Assignment 1.3 echo command line arguments.
-
-	import (
-		"fmt"
-		"os"
-	)
-
-	func main() {
-		ags := os.Args[1:]
-		for ii, ag := range ags {
-			if ii < len(ags) {
-				fmt.Printf("%s ", ag)
-			} else {
-				fmt.Printf("%s", ag)
-			}
-		}
-		fmt.Printf("\n")
-	}
 ```
 
 1. `import` is a list
@@ -269,81 +278,89 @@ You should be in a directory `~/go/src/github.com/<YourGithubUsername>/echo2`.
 Edit main.go and put this code in it:
 
 ```Go
-	package main
+  1: package main
+  2: 
+  3: // Your Name - it is important if you want to get credit for your assignment.
+  4: // Assignment 1.4 echo command line arguments and parse arguments.
+  5: 
+  6: import (
+  7:     "encoding/json"
+  8:     "flag"
+  9:     "fmt"
+ 10:     "io/ioutil"
+ 11:     "os"
+ 12: )
+ 13: 
+ 14: type ConfigData struct {
+ 15:     Name  string
+ 16:     Value string
+ 17: }
+ 18: 
+ 19: func main() {
+ 20:     var Cfg = flag.String("cfg", "cfg.json",
+ 21:         "config file for this call")
+ 22: 
+ 23:     // Parse CLI arguments to this, --cfg <name>.json
+ 24:     flag.Parse()
+ 25: 
+ 26:     fns := flag.Args()
+ 27:     //  ^---------------- Note the := declares fns
+ 28: 
+ 29:     if Cfg == nil {
+ 30:         fmt.Printf("--cfg is a required parameter\n")
+ 31:         os.Exit(1)
+ 32:     }
+ 33: 
+ 34:     gCfg, err := ReadConfig(*Cfg)
+ 35:     // ^ nd ^ ------------------ Multiple return values
+ 36:     if err != nil {
+ 37:         fmt.Fprintf(os.Stderr,
+ 38:             "Unable to read confguration: %s error %s\n",
+ 39:             *Cfg, err)
+ 40:         os.Exit(1)
+ 41:     }
+ 42: 
+ 43:     fmt.Printf("Congiguration: %+v\n", gCfg)
+ 44:     //                         ^------------------->
+ 45:     //               Format in print shows field names
+ 46:     fmt.Printf("JSON: %+v\n", IndentJSON(gCfg))
+ 47: 
+ 48:     for ii, ag := range fns {
+ 49:         //     ^------ Declare in scope of 'for'
+ 50:         //        ^------ Loop over the 'fns' slice
+ 51:         if ii < len(fns) {
+ 52:             fmt.Printf("%s ", ag)
+ 53:         } else {
+ 54:             fmt.Printf("%s", ag)
+ 55:         }
+ 56:     }
+ 57:     fmt.Printf("\n")
+ 58: }
+ 59: 
+ 60: func ReadConfig(filename string) (rv ConfigData, err error) {
+ 61:     var buf []byte
+ 62:     buf, err = ioutil.ReadFile(filename)
+ 63:     if err != nil {
+ 64:         fmt.Printf("Error: %s\n", err)
+ 65:         return
+ 66:     }
+ 67:     err = json.Unmarshal(buf, &rv)
+ 68:     if err != nil {
+ 69:         fmt.Printf("Error: %s\n", err)
+ 70:         return
+ 71:     }
+ 72:     return
+ 73: }
+ 74: 
+ 75: func IndentJSON(v interface{}) string {
+ 76:     s, err := json.MarshalIndent(v, "", "\t")
+ 77:     if err != nil {
+ 78:         return fmt.Sprintf("Error:%s", err)
+ 79:     } else {
+ 80:         return string(s)
+ 81:     }
+ 82: }
 
-	// Your Name - it is important if you want to get credit for your assignment.
-	// Your Email Address 
-	// Assignment 1.4 echo command line arguments and parse arguments.
-
-	import (
-		"encoding/json"
-		"flag"
-		"fmt"
-		"io/ioutil"
-		"os"
-	)
-
-	type ConfigData struct {
-		Name  string
-		Value string `json:"Year"` 
-	}
-
-	func main() {
-		var Cfg = flag.String("cfg", "cfg.json", "config file for this call")
-
-		flag.Parse() // Parse CLI arguments to this program, --cfg <name>.json
-
-		fns := flag.Args()
-		if len(fns) == 0 {
-			fmt.Fprintf(os.Stderr, "Usage: ./echo2 [-cfg cfg.json] arg1 ...\n")
-			os.Exit(1)
-		}
-
-		if Cfg == nil {
-			fmt.Printf("--cfg is a required parameter\n")
-			os.Exit(1)
-		}
-
-		gCfg, err := ReadConfig(*Cfg)
-		if err != nil {
-			fmt.Fprintf(os.Stderr, "Unable to read confguration: %s error %s\n", *Cfg, err)
-			os.Exit(1)
-		}
-
-		fmt.Printf("Congiguration: %+v\n", gCfg)
-		fmt.Printf("JSON: %+v\n", IndentJSON(gCfg))
-
-		for ii, ag := range fns {
-			if ii < len(fns) {
-				fmt.Printf("%s ", ag)
-			} else {
-				fmt.Printf("%s", ag)
-			}
-		}
-		fmt.Printf("\n")
-	}
-
-	func ReadConfig(filename string) (rv ConfigData, err error) {
-		var buf []byte
-		buf, err = ioutil.ReadFile(filename)
-		if err != nil {
-			return ConfigData{}, err
-		}
-		err = json.Unmarshal(buf, &rv)
-		if err != nil {
-			return ConfigData{}, err
-		}
-		return
-	}
-
-	func IndentJSON(v interface{}) string {
-		s, err := json.MarshalIndent(v, "", "\t")
-		if err != nil {
-			return fmt.Sprintf("Error:%s", err)
-		} else {
-			return string(s)
-		}
-	}
 ```
 
 Create a 2nd file - call it cfg.json with:

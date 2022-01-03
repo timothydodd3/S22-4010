@@ -3,7 +3,16 @@ PP=`pwd`
 FN=Intro-To-Go
 DIR=../../
 IMG=
-PY= 
+PY=  \
+	ans/hello-world.go \
+	ans/hw.go \
+	echo1/echo1.go \
+	echo2/echo2.go \
+	hello-world/hw.go \
+	ksum/ksum.go \
+	mkPkg/main.go \
+	print1/main.go \
+	read-json1/ex.go
 
 all: setup all2
 
