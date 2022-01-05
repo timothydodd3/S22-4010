@@ -1,21 +1,12 @@
-
 m4_include(setup.m4)
 
-## COSC Spring 2022 - 4010 or 5010 Special Topics - Blockchian
+## COSC Spring 2022 - 4010 or 5010 Special Topics - BlockChain Programming
 
-<center><div style="font-size:20pt;font-weight:bold">
+*UNIVERSITY OF WYOMING* *COSC 4010-04 or 5010*
 
-*UNIVERSITY OF WYOMING*
-
-*COSC 4010 or 5010*
-
-*Blockchain Design and Programming*
-
-*Online with scheduled discussion groups*
+*BlockChain Design and Programming*
 
 *Spring 2022*
-
-</div></center>
 
 ## Instructor contact information:
 
@@ -24,10 +15,14 @@ Email: pschlump@uwyo.edu
 Phone: (for emergencies) 720-209-7888 - before you call you need to SMS me with who you are and what class you are in so that I add
 you to my address book.  I get far too many robo-calls to answer unknown phone numbers.  Generally I am available from 7AM to 10PM.
 
+## Location:
+
+12:00 PM - 12:50 PM Classroom Room: 118 
+
 ## Office hours:
 
-I will hold office hours from 8:00AM to 9:00AM on Monday, Wednesday and Friday or by appointment.   xyzzy
-Office hours are on zoom - I will send out a link via email.
+- Office: 4081B in the Engineering Building.   My office is right across the hall from the Computer Science Department Office.
+- Office: Office hours will be  Tu/Th from 9:25am to 10:50am (immediately before this class) and by appointment.  
 
 ## Required texts
 
@@ -35,7 +30,7 @@ xyzzy - Textbook: We have a textbook for the 2nd 1/2 of the class on  Ethereum/S
 The text book for Go is a free online PDF: [https://www.golang-book.com/books/intro](https://www.golang-book.com/books/intro)
 We will also be using IOHK’s Blockchain. It is programmed in Haskell.
 
-This means that you will need to program in Go, Solidity, Haskell in a single semester.  We will have some focus on how to learn a new
+This means that you will need to program in Go and Solidity.  We will have some focus on how to learn a new
 language and become effective in that language.
 
 ## General requirements and expectations for the course
@@ -43,11 +38,6 @@ language and become effective in that language.
 You must demonstrate working homework to the instructor or to the class grader to pass the class (no matter how many
 points you get). For code developed in Go, test cases will be supplied.  The Go homework are cumulative.
 Assignment 3 depends on getting a working version of 2 etc.
-
-The class will have lectures - pre-record, discussion groups that have attendance taken - you are required to attend
-the discussion - they will be at 3 different times of the day.   The topic is the same at each
-time so just attend one time.  There are 5 of these.
-
 
 
 ## Required examinations and assignments
@@ -110,16 +100,62 @@ a limited programming background I will work with you.
 
 
 
-m4_define([[[m4_comment]]],[[[]]])
-
 m4_comment([[[
-
+<!--
 1. Solidity stuff - revise
 2. Revise dates/weeks to end of semester
 3. URL for lecture list
 4. The days for interctive
 5. Table of Assignment
 
+
+    January 2022      
+Su Mo Tu We Th Fr Sa  
+                   1  
+ 2  3  4  5  6  7  8  
+ 9 10 11 12 13 14 15  
+16 17 18 19 20 21 22  
+       ^===================== 1st class
+          ^=================== 1st day of THIS class (MWF)
+23 24 25 26 27 28 29  
+30 31                 
+
+   February 2022      
+Su Mo Tu We Th Fr Sa  
+       1  2  3  4  5  
+ 6  7  8  9 10 11 12  
+13 14 15 16 17 18 19  
+20 21 22 23 24 25 26  
+27 28 
+                
+     March 2022       
+Su Mo Tu We Th Fr Sa  
+       1  2  3  4  5  
+ 6  7  8  9 10 11 12  
+13 14 15 16 17 18 19  
+20 21 22 23 24 25 26  
+                  ^===
+27 28 29 30 31        
+^===^========================== Note 28th is a Monday.
+                      
+     April 2022       
+Su Mo Tu We Th Fr Sa  
+                1  2  
+ 3  4  5  6  7  8  9  
+10 11 12 13 14 15 16  
+17 18 19 20 21 22 23  
+24 25 26 27 28 29 30  
+                      
+      May 2022        
+Su Mo Tu We Th Fr Sa  
+ 1  2  3  4  5  6  7  
+ 8  9 10 11 12 13 14  
+    ^^^^^^^^^^^^^================ Finals
+15 16 17 18 19 20 21  
+22 23 24 25 26 27 28  
+29 30 31              
+                      
+-->
 ]]])
 
 

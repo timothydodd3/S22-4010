@@ -1,4 +1,3 @@
-
 m4_include(setup.m4)
 
 # For Graduate Students
@@ -43,9 +42,4 @@ There are a number of projects around the state government and UW that are Block
 1. Registration of Companies
 
 Pick one of these and write an outline of how it can be implemented on a Blockchain.
-
-
-
-
-
 

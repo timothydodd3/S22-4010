@@ -1,15 +1,14 @@
 
 PP=`pwd`
 FN=syllabus
-# FN1=syllabus-5010
+FN1=syllabus-5010
 # DIR=../F20-1015
 DIR=./
 IMG=
 PY=
 
 all: ${FN}.html ${FN}.pdf
-
-#${FN1}.html 
+all: ${FN1}.html ${FN1}.pdf
 
 %.pdf: %.md
 	~/bin/md-to-pdf.sh $<
