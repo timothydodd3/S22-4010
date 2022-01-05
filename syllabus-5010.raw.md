@@ -7,11 +7,8 @@ In addition to the 4010 class syllabus the following is required for graduate st
 
 | Date                            | Topics                                                                     |
 |---------------------------------|:---------------------------------------------------------------------------|
-| Wed&nbsp;Jan&nbsp;29,&nbsp;2021 | Reading Papers                                                             |
-| Fri&nbsp;Jan&nbsp;31,&nbsp;2021 | Individual times to meat with graduate students on papers/concepts.        |
-|                                 | Plan on getting tougher with me for 3 hours across the semester.           |
-|                                 | We will do this on a per-person basis.                                     |
-| Fri&nbsp;May&nbsp;01,&nbsp;2021 | Paper due.                                                                 |
+| Wed&nbsp;Feb&nbsp;16,&nbsp;2022 | Reading Papers                                                             |
+| Fri&nbsp;May&nbsp;06,&nbsp;2022 | Paper due.                                                                 |
 
 
 Please read all of the following:
@@ -42,4 +39,6 @@ There are a number of projects around the state government and UW that are Block
 1. Registration of Companies
 
 Pick one of these and write an outline of how it can be implemented on a Blockchain.
+
+
 
