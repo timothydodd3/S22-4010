@@ -22,7 +22,7 @@ you to my address book.  I get far too many robo-calls to answer unknown phone n
 ## Office hours:
 
 - Office: 4081B in the Engineering Building.   My office is right across the hall from the Computer Science Department Office.
-- Office: Office hours will be  Tu/Th from 9:25am to 10:50am (immediately before this class) and by appointment.  
+- Office: Office hours will be  Tu/Th from 9:25am to 10:50am and by appointment.  
 
 ## Required texts
 
