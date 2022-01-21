@@ -8,7 +8,8 @@ Lecture 02 - What is a BlockChain - more on Go.
 
 1. Canadian Steel / Supply chain tracking on blockchain.
 2. LinkedIn ranks blockchain as the number two technology skill companies need in 2020.
-3. Oil & Gas Blockchain Consortium goes ahead with project around expense approval.
+3. Digital Dollar - from fed report could effect stability of dollar.
+4. NFTs - OpenSea trades 4.5 billion in one month.
 
 ## Question: What is a **hash**?
 
@@ -123,5 +124,19 @@ m4_include(unmarshal/unmarshal.go.nu)
 
 ### For loops
 
+```
+m4_include(for/main.go.nu)
+```
+
+### Functions
+
+
+```
+m4_include(funcDemo/main.go.nu)
+```
+
+```
+m4_include(funcDemo/qs_test.go.nu)
+```
 
 

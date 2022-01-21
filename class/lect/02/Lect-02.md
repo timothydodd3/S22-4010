@@ -23,7 +23,8 @@ Lecture 02 - What is a BlockChain - more on Go.
 
 1. Canadian Steel / Supply chain tracking on blockchain.
 2. LinkedIn ranks blockchain as the number two technology skill companies need in 2020.
-3. Oil & Gas Blockchain Consortium goes ahead with project around expense approval.
+3. Digital Dollar - from fed report could effect stability of dollar.
+4. NFTs - OpenSea trades 4.5 billion in one month.
 
 ## Question: What is a **hash**?
 
@@ -222,5 +223,105 @@ $ go build
 
 ### For loops
 
+```
+  1: package main
+  2: 
+  3: import "fmt"
+  4: 
+  5: var aSlice = []string{"abc", "def", "ghi"}
+  6: var aMap = map[string]int{
+  7:     "alice": 22,
+  8:     "bob":   23,
+  9:     "tom":   25,
+ 10: }
+ 11: 
+ 12: func main() {
+ 13:     for i := 0; i < 5; i++ {
+ 14:         fmt.Printf("Loop 1: %d\n", i)
+ 15:     }
+ 16:     fmt.Printf("\n")
+ 17: 
+ 18:     for i, v := range aSlice {
+ 19:         fmt.Printf("Loop 2: at:%d ->%s<-\n", i, v)
+ 20:     }
+ 21:     fmt.Printf("\n")
+ 22: 
+ 23:     for key, val := range aMap {
+ 24:         fmt.Printf("Loop 3: key:%s ->%v<-\n", key, val)
+ 25:     }
+ 26: }
+
+```
+
+### Functions
+
+
+```
+  1: package main
+  2: 
+  3: import "fmt"
+  4: 
+  5: func Qs(ss []string) (rv []string) {
+  6: 
+  7:     partition := func(arr []string, low, high int) ([]string, int) {
+  8:         pivot := arr[high]
+  9:         i := low
+ 10:         for j := low; j < high; j++ {
+ 11:             if arr[j] < pivot {
+ 12:                 arr[i], arr[j] = arr[j], arr[i]
+ 13:                 i++
+ 14:             }
+ 15:         }
+ 16:         arr[i], arr[high] = arr[high], arr[i]
+ 17:         return arr, i
+ 18:     }
+ 19: 
+ 20:     var quickSort func(arr []string, low, high int) []string
+ 21:     quickSort = func(arr []string, low, high int) []string {
+ 22:         if low < high {
+ 23:             var p int
+ 24:             arr, p = partition(arr, low, high)
+ 25:             arr = quickSort(arr, low, p-1)
+ 26:             arr = quickSort(arr, p+1, high)
+ 27:         }
+ 28:         return arr
+ 29:     }
+ 30: 
+ 31:     rv = quickSort(ss, 0, len(ss)-1)
+ 32:     return
+ 33: }
+ 34: 
+ 35: func main() {
+ 36:     r := Qs([]string{"def", "ghi", "abc", "ddd", "zzz"})
+ 37:     fmt.Printf("%v\n", r)
+ 38: }
+
+```
+
+```
+  1: package main_test
+  2: 
+  3: import (
+  4:     "reflect"
+  5:     "testing"
+  6: 
+  7:     main "github.com/Univ-Wyo-Education/S22-4010/class/lect/02/funcDemo"
+  8: )
+  9: 
+ 10: func Test_Qs(t *testing.T) {
+ 11:     expect := []string{"abc", "ddd", "def", "ghi", "zzz"}
+ 12:     data := []string{"def", "ghi", "abc", "ddd", "zzz"}
+ 13: 
+ 14:     rv := main.Qs(data)
+ 15:     if len(rv) != len(expect) {
+ 16:         t.Errorf("Expected %v got %v\n", expect, rv)
+ 17:     }
+ 18:     if !reflect.DeepEqual(rv, expect) {
+ 19:         t.Errorf("Expected %v got %v\n", expect, rv)
+ 20:     }
+ 21: 
+ 22: }
+
+```
 
 
