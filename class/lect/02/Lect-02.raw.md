@@ -7,7 +7,7 @@ Lecture 02 - What is a BlockChain - more on Go.
 ## News
 
 1. Canadian Steel / Supply chain tracking on blockchain.
-2. LinkedIn ranks blockchain as the number two technology skill companies need in 2020.
+2. LinkedIn ranks blockchain as the number two technology skill companies need in 2021.
 3. Digital Dollar - from fed report could effect stability of dollar.
 4. NFTs - OpenSea trades 4.5 billion in one month.
 
