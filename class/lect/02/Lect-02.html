@@ -859,6 +859,71 @@ $ go build
 
 <h3>Marshal and Unmarshal of data - walk through</h3>
 
+<pre><code>  1: package main
+  2: 
+  3: import (
+  4:     &quot;encoding/json&quot;
+  5:     &quot;fmt&quot;
+  6: )
+  7: 
+  8: type Demo struct {
+  9:     Aa int
+ 10:     Ab string
+ 11: }
+ 12: 
+ 13: func main() {
+ 14:     d := Demo{
+ 15:         Aa: 33,
+ 16:         Ab: &quot;Penguines are People Too...&quot;,
+ 17:     }
+ 18: 
+ 19:     buf, err := json.Marshal(d)
+ 20:     if err != nil {
+ 21:         fmt.Printf(&quot;Error: %s\n&quot;, err)
+ 22:     }
+ 23: 
+ 24:     fmt.Printf(&quot;%s\n&quot;, buf)
+ 25: 
+ 26:     buf, err = json.MarshalIndent(d, &quot;&quot;, &quot;\t&quot;)
+ 27:     if err != nil {
+ 28:         fmt.Printf(&quot;Error: %s\n&quot;, err)
+ 29:     }
+ 30: 
+ 31:     fmt.Printf(&quot;%s\n&quot;, buf)
+ 32: }
+
+</code></pre>
+
+<pre><code>  1: package main
+  2: 
+  3: import (
+  4:     &quot;encoding/json&quot;
+  5:     &quot;fmt&quot;
+  6: )
+  7: 
+  8: type Demo struct {
+  9:     Aa int `json:&quot;A_cx&quot;`
+ 10:     Ab string
+ 11: }
+ 12: 
+ 13: func main() {
+ 14:     s := `{
+ 15:         &quot;A_cx&quot;: 33,
+ 16:         &quot;Ab&quot;: &quot;Penguines are People Too...&quot;,
+ 17:         &quot;Ac&quot;: &quot;skips this, no error&quot;
+ 18:     }`
+ 19: 
+ 20:     var d Demo
+ 21:     err := json.Unmarshal([]byte(s), &amp;d)
+ 22:     if err != nil {
+ 23:         fmt.Printf(&quot;Error: %s\n&quot;, err)
+ 24:     }
+ 25: 
+ 26:     fmt.Printf(&quot;%+v\n&quot;, d)
+ 27: }
+
+</code></pre>
+
 <h3>For loops</h3>
 
 </div>

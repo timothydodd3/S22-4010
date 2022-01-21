@@ -113,6 +113,14 @@ $ go build
 
 ### Marshal and Unmarshal of data - walk through
 
+```
+m4_include(marshal/marshal.go.nu)
+```
+
+```
+m4_include(unmarshal/unmarshal.go.nu)
+```
+
 ### For loops
 
 
