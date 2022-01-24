@@ -4,13 +4,6 @@ m4_include(../../../setup.m4)
 Lecture 02 - What is a BlockChain - more on Go.
 ----------------
 
-## News
-
-1. xyzzy
-1. xyzzy
-1. xyzzy
-1. xyzzy
-
 ## Question: What is a **hash**?
 
 1. (math) a mapping form a range to a domain.
@@ -68,6 +61,8 @@ estimated to cost 75 billion.
 State of Nevada - Marriage license on blockchain.  
 
 The largest single "blockchain" sale is valued at 103 million.   In a commercial property in Zurich.
+
+El Salvidor - has made Bitcoin a national currency.  Thy just purchased 410 of them.
 
 At the same time, China and India have both banned crypto-currencies!  So 2/5ths of the world
 have made it illegal.  Kasascstan has banned crypto-mining because it uses too much electricity.
