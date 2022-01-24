@@ -1,5 +1,5 @@
 
-all: Mining.html build
+all: build
 
 build:
 	( cd main ; go build )
@@ -14,10 +14,29 @@ build:
 # $ cd markdown-cli
 # $ go build
 #
-FR=../../Lectures/01
 
-Mining.html: Mining.md
-	markdown-cli --input=./Mining.md --output=Mining.html
-	cat ${FR}/css/pre ${FR}/css/markdown.css ${FR}/css/post ../../md.css ${FR}/css/hpre Mining.html ${FR}/css/hpost >/tmp/Mining.html
-	mv /tmp/Mining.html ./Mining.html
+PP=`pwd`
+FN=Assignment-02-Mining
+DIR=.././../
+IMG=
+PY=
+
+all: setup all2
+
+setup:
+	../mk_all_nu.sh
+
+all2: ${FN}.html ${PY}
+
+
+.PRECIOUS: %.md 
+%.md: %.raw.md $(PY) $(IMG)
+	m4 -P $< >$@
+
+%.html: %.md
+	blackfriday-tool ./$< $@
+	echo cat ./${DIR}/css/md.css $@ >/tmp/$@
+	cat ./${DIR}/css/pre ./${DIR}/css/markdown.css ./${DIR}/css/post ./${DIR}/css/md.css ./${DIR}/css/hpre $@ ./${DIR}/css/hpost >/tmp/$@
+	mv /tmp/$@ ./$@
+	echo "file://${PP}/$@" >>open.1
 
