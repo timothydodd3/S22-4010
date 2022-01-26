@@ -40,6 +40,8 @@ Personal Finance
 
 Two Economies in US today.  The "high-tech" and the "traditional" economy.
 
+Per-Capita Income broken down by counties won in 2020.
+
 ```
       winner       | per_capita_income_2020 
 -------------------+------------------------
@@ -47,6 +49,20 @@ Two Economies in US today.  The "high-tech" and the "traditional" economy.
  Donald J Trump    |               47960.04
 (2 rows)
 ```
+
+
+GDP Growth broken down by counties won in 2020.
+
+```
+      winner       | pct_of_growth 
+-------------------+---------------
+ Donald J Trump    |         9.05%
+ Joseph R Biden Jr |        90.95%
+(2 rows)
+```
+
+
+
 
 An income model.
 
