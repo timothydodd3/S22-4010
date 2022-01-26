@@ -2,7 +2,7 @@
 m4_include(../../../setup.m4)
 
 
-More On Go / Personal Fiance
+More On Go / Fiance
 ====================
 
 1st. the news
@@ -40,7 +40,17 @@ Personal Finance
 
 Two Economies in US today.  The "high-tech" and the "traditional" economy.
 
-(See Spreadsheet)
+```
+      winner       | per_capita_income_2020 
+-------------------+------------------------
+ Joseph R Biden Jr |               65531.65
+ Donald J Trump    |               47960.04
+(2 rows)
+```
+
+An income model.
+
+
 
 
 
