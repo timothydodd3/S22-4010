@@ -1,0 +1,7 @@
+vim-go
+panic: assignment to entry in nil map
+
+goroutine 1 [running]:
+main.main()
+	/Users/philip/go/src/github.com/Univ-Wyo-Education/S22-4010/class/lect/04/go_panic.go:9 +0x71
+exit status 2
