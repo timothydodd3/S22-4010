@@ -39,7 +39,6 @@ Personal Finance
 =====
 
 Two Economies in US today.  The "high-tech" and the "traditional" economy.
-
 Per-Capita Income broken down by counties won in 2020.
 
 ```
@@ -47,7 +46,6 @@ Per-Capita Income broken down by counties won in 2020.
 -------------------+------------------------
  Joseph R Biden Jr |               65531.65
  Donald J Trump    |               47960.04
-(2 rows)
 ```
 
 
@@ -58,13 +56,11 @@ GDP Growth broken down by counties won in 2020.
 -------------------+---------------
  Donald J Trump    |         9.05%
  Joseph R Biden Jr |        90.95%
-(2 rows)
 ```
 
 
 
 
-An income model.
 
 
 
@@ -105,6 +101,13 @@ Diagram of mining
 
 What is the mining process
 
+<div class="pagebreak"></div>
+
+```
+m4_include(ins_mine.go.nu)
+```
+
+<div class="pagebreak"></div>
 
 4. More on Go
 
