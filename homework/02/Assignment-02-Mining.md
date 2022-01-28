@@ -54,7 +54,7 @@ is the block hash.
 To get started, first checkout the code for Assignment 2 - this can be done by: (You can go online to it and cut-paste
 the link - that is what I usually do. In the browser go to
 [https://github.com/Univ-Wyo-Education](https://github.com/Univ-Wyo-Education). Then click on the
-`S20-4010` repository. When that comes up there is a green button on the left that says `Clone or
+`S22-4010` repository. When that comes up there is a green button on the left that says `Clone or
 download`. Click on that. Cut and paste the URL.)
 
 (You have probably already done this)
@@ -63,15 +63,15 @@ download`. Click on that. Cut and paste the URL.)
 	cd ~/go/src/github.com/
 	mkdir Univ-Wyo-Education
 	cd Univ-Wyo-Education
-	git clone https://github.com/Univ-Wyo-Education/S20-4010.git
-	cd S20-4010
+	git clone https://github.com/Univ-Wyo-Education/S22-4010.git
+	cd S22-4010
 ```
 
-If you have already cloned the S20-4010 set of information you will need to update it to current.
+If you have already cloned the S22-4010 set of information you will need to update it to current.
 You may have made changes already.
 
 ```
-	cd ~/go/src/github.com/Univ-Wyo-Education/S20-4010
+	cd ~/go/src/github.com/Univ-Wyo-Education/S22-4010
 	git stash
 	git pull
 	git checkout -b hw02
@@ -82,25 +82,22 @@ The `checkout -b` will create a new branch for you to work on.
 Having your own branch (you can name it other than hw2) will allow you to 
 switch back and forth between the original code and your modified code.
 
-Then from the `~/go/src/github.com/Univ-Wyo-Education/S20-4010` directory
+Then from the `~/go/src/github.com/Univ-Wyo-Education/S22-4010` directory
 change directory into assignment 2.
 
 ```sh
-	cd Assignmetnts/02
+	cd homework/02
 ```
 
 Our starting code is in this directory.  Specifically we will want to
 compile the main program.  It is in ./main.  Cd to that directory.
 You shooed end up in:
-`~/go/src/github.com/Univ-Wyo-Education/S20-4010/a/02`
+`~/go/src/github.com/Univ-Wyo-Education/S22-4010/homework/02`
 
 ```sh
 	cd ./main
-	go get
 	go build
 ```
-
-`go get` will pull in any dependent packages that are needed to build this.
 
 Run main to create the genesis block and the initial index.
 
@@ -109,7 +106,7 @@ Run main to create the genesis block and the initial index.
 ```
 
 This should create a directory with 2 files in it.  The default 
-is in the `./data` directory ( `.../a/02/main/data` ).  The files are:
+is in the `./data` directory ( `.../homework/02/main/data` ).  The files are:
 
 ```
 	136c53391115ab7ff717bd24e62dd0df2c270500d7194290169a83488022548e.json
@@ -123,14 +120,14 @@ The one with the long name is our genesis block. The `index.json` is an
 index that will allow us to find data blocks as we are building the this blockchain.
 
 The code is missing the chunk that will do the block mining. The stubbed out function is in
-`.../a/02/mine/mine.go`. Your
+`.../homework/02/mine/mine.go`. Your
 assignment is to implement the body of the function. You will want to verify that it works by running
 
 ```sh
 	go test
 ```
 
-in the `.../a/02/mine` directory.  If you run that now you should get `FAIL`
+in the `.../homework/02/mine` directory.  If you run that now you should get `FAIL`
 because you have not implemented it yet.
 
 Take the time to go and poke through the code.  This code is the basis
@@ -162,9 +159,9 @@ Code that I have supplied you with:
 | go Package        | Description                                                      |
 |------------------:|------------------------------------------------------------------|
 | block             | Operations on blocks like initialization and searilization.      |
-|                   | Look in the `.../a/02/block/block.go` file.          |
+|                   | Look in the `.../homework/02/block/block.go` file.          |
 | hash              | Convenience functions to work with keccak256 hash.                 |
-|                   | Look in the `.../a/02/hash/hash.go` file.            |
+|                   | Look in the `.../homework/02/hash/hash.go` file.            |
 
 `go` Library functions you will need to use:
 
@@ -228,7 +225,7 @@ My output when running the test.
 	((Mining)) Hash for Block [0000adc29a80f1f0df08c8687c013d179050f5d1b449599e4d1437e4fad23525] nonce [   46734]
 	((Mining)) Hash for Block [000013ce557332aaa68abe3b7bf1be856743a03689a802606a732e81713bb78c] nonce [    4527]
 	PASS
-	ok  	github.com/Univ-Wyo-Education/S20-4010/a/02/mine	0.237s
+	ok  	github.com/Univ-Wyo-Education/S22-4010/homework/02/mine	0.237s
 ```
 
 The grader has a somewhat more comprehensive automated test to run with this code (There is one more block
@@ -253,10 +250,6 @@ One of the major security and validity checks that blockchains
 do is using Merkle trees.
 
 In this assignment you will implement a Merkle tree hash.
-
-When you pull code from git you should have a `./A-03/hash` directory.
-This is a copy of Assignment 2's `./A-02/hash`.  The new code that you will
-be working on is in `./merkle`.
 
 
 ### Pseudo Code
@@ -286,9 +279,8 @@ Submit
 
 1. mine.go - from part 1.
 2. a copy of your output from running `go test` in the `./mine` directory.
-1. Your code, ./merkle/merkle.go. - from part 2.
+1. Your code, ../merkle/merkle.go. - from part 2.
 2. Any additional test cases that you created.
-3. Your proof that this works.
 
 References
 =============================================================
