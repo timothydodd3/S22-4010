@@ -56,5 +56,5 @@ func MineBlock(bk *block.BlockType, difficulty string) {
 	//
 
 	// TODO: Start coding here.
-	InstructorImplementationMineBlock(bk, difficulty)
+	// InstructorImplementationMineBlock(bk, difficulty)
 }
