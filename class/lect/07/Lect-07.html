@@ -723,13 +723,13 @@ ol {
 }
 </style>
 
-<h1>Last Part on Go</h1>
+<h1>More on Go, Stocks</h1>
 
 <h2>Goroutines</h2>
 
 <p>Go routes allow you to create parallel running code.</p>
 
-<pre><code>  1: package main
+<pre><code class="language-Go">  1: package main
   2: 
   3: import (
   4:     &quot;fmt&quot;
@@ -777,57 +777,85 @@ ol {
 
 <h2>Variable parameter list functions.</h2>
 
-<pre><code class="language-Go">func vexample(a int, b ...interface{}) {
-	for pos, bVal := range b {
-		switch v := bVal.(type) {
-		case int:
-			fmt.Printf(&quot;It's an int, %d at %d\n&quot;, v, pos)
-		case []int:
-			fmt.Printf(&quot;It's a slice of int\n&quot;)
-		default:
-			fmt.Printf(&quot;It's a something else\n&quot;)
-		}
-	}
-}
+<p>Also an example of reflection.</p>
+
+<pre><code class="language-Go">  1: package main
+  2: 
+  3: import &quot;fmt&quot;
+  4: 
+  5: func vexample(a int, b ...interface{}) {
+  6:     for pos, bVal := range b {
+  7:         switch v := bVal.(type) {
+  8:         case int:
+  9:             fmt.Printf(&quot;It's an int, %d at %d\n&quot;, v, pos)
+ 10:         case []int:
+ 11:             fmt.Printf(&quot;It's a slice of int\n&quot;)
+ 12:         default:
+ 13:             fmt.Printf(&quot;It's a something else\n&quot;)
+ 14:         }
+ 15:     }
+ 16: }
 
 </code></pre>
 
 <h2>Interfaces to sets of functions.</h2>
 
-<pre><code class="language-Go">type InterfaceSpecType interface {
-	DoFirstThing(p1 int, p2 int) error
-	DoSomethingElse() error
-}
+<pre><code class="language-Go">  1: package main
+  2: 
+  3: type InterfaceSpecType interface {
+  4:     DoFirstThing(p1 int, p2 int) error
+  5:     DoSomethingElse() error
+  6: }
+  7: 
+  8: type InterfaceOtherType interface {
+  9:     DoSomethingElse() error
+ 10:     DoSomethingSpecial(in int) error
+ 11: }
+ 12: 
+ 13: type ImplementationType struct {
+ 14:     AA int
+ 15:     BB int
+ 16: }
+ 17: 
+ 18: // Verify at compile time that the implementation type
+ 19: // is a valid implementation of the interface.
+ 20: var _ InterfaceSpecType = (*ImplementationType)(nil)
+ 21: 
+ 22: // Validate 2nd interface spec.
+ 23: var _ InterfaceOtherType = (*ImplementationType)(nil)
+ 24: 
+ 25: func NewImplementationType() InterfaceSpecType {
+ 26:     return &amp;ImplementationType{
+ 27:         AA: 1,
+ 28:         BB: 2,
+ 29:     }
+ 30: }
+ 31: 
+ 32: func (xy *ImplementationType) DoFirstThing(p1 int, p2 int) error {
+ 33:     // ... do something ...
+ 34:     return nil
+ 35: }
+ 36: 
+ 37: func (xy *ImplementationType) DoSomethingElse() error {
+ 38:     // ... do something ...
+ 39:     return nil
+ 40: }
+ 41: 
+ 42: func (xy *ImplementationType) DoSomethingSpecial(in int) error {
+ 43:     // ... do something ...
+ 44:     return nil
+ 45: }
+ 46: 
+ 47: func Demo() {
+ 48:     var dd InterfaceSpecType
+ 49:     dd = NewImplementationType()
+ 50:     _ = dd.DoSomethingElse()
+ 51: }
+ 52: 
+ 53: func main() {
+ 54:     Demo()
+ 55: }
 
-type ImplementationType struct {
-	AA int
-	BB int
-}
-
-var _ InterfaceSpecType = (*ImplementationType)(nil)
-
-func NewImplementationType() InterfaceSpecType {
-	return &amp;ImplementationType{
-		AA: 1,
-		BB: 2,
-	}
-}
-
-func (xy *ImplementationType) DoFirstThing(p1 int, p2 int) error {
-	// ... do something ...
-	return nil
-}
-
-func (xy *ImplementationType) DoSomethingElse() error {
-	// ... do something ...
-	return nil
-}
-
-func Demo() {
-	var dd InterfaceSpecType
-	dd = NewImplementationType()
-	_ = dd.DoSomethingElse()
-}
 </code></pre>
 
 <h2>Go Channels</h2>
@@ -842,6 +870,24 @@ func Demo() {
 <li>No objects - Use interfaces instead.  No inheritance.</li>
 <li>Executables are big</li>
 </ol>
+
+<div class="pagebreak"></div>
+
+<h2>Stock Stuff</h2>
+
+<p>What is a Stock?</p>
+
+<p>What is a Dividend?</p>
+
+<p>Wyoming Laws on Stocks.</p>
+
+<p>What is a Bond?  What is a Fixed Coupon v.s. a Variable Capon?</p>
+
+<p>What is Yield?</p>
+
+<p>How are dividends payed?</p>
+
+<p>Other Investments (Gold, Diamonds, Houses, Apartments)</p>
 
 </div>
 
