@@ -1,4 +1,19 @@
-m4_include(../../../setup.m4)
+
+<style>
+.pagebreak { page-break-before: always; }
+.half { height: 200px; }
+</style>
+<style>
+.pagebreak { page-break-before: always; }
+.half { height: 200px; }
+.markdown-body {
+	font-size: 12px;
+}
+.markdown-body td {
+	font-size: 12px;
+}
+</style>
+
 
 
 Last Part on Go
@@ -11,7 +26,41 @@ Go routes allow you to create parallel running code.
 
 
 ```
-m4_include(ex0.go.nu)
+  1: package main
+  2: 
+  3: import (
+  4:     "fmt"
+  5:     "sync"
+  6: )
+  7: 
+  8: var wg sync.WaitGroup
+  9: 
+ 10: func f(from string) {
+ 11:     wg.Add(1)
+ 12:     defer wg.Done()
+ 13:     for i := 0; i < 3; i++ {
+ 14:         fmt.Printf("%s: %v\n", from, i)
+ 15:     }
+ 16: }
+ 17: 
+ 18: func main() {
+ 19: 
+ 20:     f("direct")
+ 21: 
+ 22:     go f("goroutine")
+ 23: 
+ 24:     for i := 0; i < 10; i++ {
+ 25:         wg.Add(1)
+ 26:         go func(msg string) {
+ 27:             defer wg.Done()
+ 28:             fmt.Printf("%s\n", msg)
+ 29:         }(fmt.Sprintf(" I am %d ", i))
+ 30:     }
+ 31: 
+ 32:     wg.Wait()
+ 33:     fmt.Printf("All Done\n")
+ 34: }
+
 ```
 
 
