@@ -1,27 +1,28 @@
 package merkle
 
 import (
-	"fmt"
-
 	"github.com/Univ-Wyo-Education/S22-4010/homework/02/hash"
 )
 
 func MerkleHash(data [][]byte) []byte {
-	var hTmp [][]byte = data[0:(len(data))]
+	var hTmp [][]byte = data[0:len(data)]
 
 	for i := 0; i < len(data); i++ {
 		theHashOfData := hash.HashOf(data[i])
 		hTmp[i] = theHashOfData
+		// theHashAsAString := hex.EncodeToString(hTmp[i])
+		// fmt.Printf("The has as String [%s] at point [%d]\r", theHashAsAString, i)
 	}
-	ln := (len(data) / 2) + 1
+	ln := len(data)/2 + 1
 	var hMid [][]byte = data[0:ln]
+	// fmt.Printf("Length of Data [%d]\n", ln)
 
-	for j := 0; ln >= 3; j++ {
-		fmt.Printf("hMid is [%d]", ln)
-		tempHash := hash.Keccak256(hTmp[j], hMid[j])
+	for i := 0; i >= ln && ln >= 1; i++ {
+		tempHash := hash.Keccak256(hTmp[i], hMid[i])
 		hMid = append(hMid, tempHash)
 		hTmp = hMid
 		ln = len(hTmp) / 2
+		hMid = hMid[0:ln]
 	}
 	return hTmp[0]
 }
