@@ -7,11 +7,25 @@ News
 
 1. European Space Agency Funds Blockchain Project Recording Satellite Data
 2. Accounting in space
+3. 3.6B in bitcoin ceased because it was be laundered by a married couple.
 
 Reading
 ======
 
 Consensus Algorithms, PoW, PoS and better ones: [https://medium.com/coinbundle/consensus-algorithms-dfa4f355259d](https://medium.com/coinbundle/consensus-algorithms-dfa4f355259d)
+
+Consensus
+============
+
+
+
+
+
+
+
+
+
+
 
 
 
