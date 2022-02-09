@@ -86,7 +86,7 @@ func main() {
 And OUTPUT!!!!
 
 ```
-m4_include(go_r2.out)
+m4_include(go-r2.out)
 m4_comment([[[
 $ go run go-r2.go
 a=17
@@ -384,11 +384,87 @@ Consensus
 m4_comment([[[ TODO - xyzzy ]]])
 
 
+The original Byzantine Fault Tolerance is from research done by Leslie Lamport in 1978.  This was revolutionary because 
+it was the first look at actual failures in control systems for flight.   Lamport used formal methods to prove that
+faiure was not just, "it quit working" but that falure could also be "it became malicious and it lied".  The solution
+was not really a practical one.
+
+That leads us to: Practical Byzantine Fault Tolerance  (pBFT) is a consensus algorithm developed in 90s by Barbara Liskov
+and Miguel Castro.  They took a new look at (BFT) and figured out how to do it with a much better communication and
+performance and how to implement it so it can be made to work.  Lamport had gone on to develop a system that worked
+with clocks syncronizing nodes - and this is the basis of Googles F1 database.  pBFT works on an asyncronous 
+network with no upper bound on when the requests will be received.  It is optimized for low overhead.
+It is used in important real world systems like AirBus, probes sent to Mars and in my Mersadies Sprinter Van.
+It also happens to be at the heart of concensus for Bitcoin.
+
+Concensus is when a set of nodes that are distributed reach a common agreement on the "state" of the world.
+This will not be taken to mean that they reach the "correct" or "truthful" state of the world.  It only means
+that they reach an "agreement" that the world is in "a" state.
+
+BFT's can aggree even when some of the nodes fail to repond or lie about a response.  The objective of BFT is
+to safeguard agains the failures in the system by applying a collective decision making process that reduces the
+risk of faulty nodes.  BFT is a solution to the Byzantine Generals’ Problem.
+
+### Byzantine Generals’ Problem
+
+From the paper by Leslie Lamport, Robert Shostak and Marshall Pease at Microsoft Research in 1982:
+
+"Imagine that several divisions of the Byzantine army are camped
+outside an enemy city, each division commanded by its own general.
+The generals can communicate with one another only by messenger.
+After observing the enemy, they must decide upon a common plan of
+action. However, some of the generals may be traitors, trying to
+prevent the loyal generals from reaching an agreement. The generals
+must decide on when to attack the city, but they need a strong
+majority of their army to attack at the same time. The generals
+must have an algorithm to guarantee that (a) all loyal generals
+decide upon the same plan of action, and (b) a small number of
+traitors cannot cause the loyal generals to adopt a bad plan. The
+loyal generals will all do what the algorithm says they should, but
+the traitors may do anything they wish. The algorithm must guarantee
+condition (a) regardless of what the traitors do. The loyal generals
+should not only reach agreement, but should agree upon a reasonable
+plan."
 
 
+A timeout with a default vote can be added to the system - and this is often done.  This puts a time bound
+on getting messages and what happens when that time bound is reached.   It also tends to hide nodes that
+have permanently disapeard.   
 
+Lamport proved that with `3m+1` working processors a concensus on state can be calculated if at most `m`
+systems are faulty.  This implies that two thirds, `2/3`, of the number of computers should be properly working.
 
+There are a bunch of failure modes:
 
+1. no reponce
+2. stuck responce (the all 1's case, or continuous lies)
+3. responce with an invalid or incorrect result
+4. deliberate lies
+
+Bitcoin is using a Proof-of-Work system that is much closer to Lamport's 1978 paper.
+pBFT has a number of advantages.
+
+1. Finality is achieved immediatly.  Bitcoin will not finalize a transaction until 6 more blocks are added - and at a rate of 10min per block this is an hour.
+2. in pBFT all active nodes participate in voting.   This means that it is not a race - it is a common goal.  Rewards in the systme can be distributed evenly - instead of one winner.
+3. Much more enegrgy effecient.  No PoW - Zilliqa runs a PoW only once in every 100 blocks - instead of on every block.   Veification of blocks is not done like Bitcoin on every block every time before adding blocks.
+
+### pBFT approach.
+
+pBFT a leader node is chosen.  If no leader is availabe the system can vote for a new leader.  All non-leader nodes are called Secondary or Backup nodes.
+
+A vote will be taken by sharing blocks where a majority of total nodes results in choosing the correct result.  Usually when a majority is achieved - the
+non-majority is then ignored.  IF youhave 5 notes, and 3 say "state is X", then the other 2 can now be disregarded.  They may-or-may-not aggee - but 
+concensus has been achieved.
+
+There are 4 phases in the pBFT consensus system (from the pBFT paper):
+
+1. The client sends a request to the primary(leader) node.
+2. The primary(leader) node broadcasts the request to the all the secondary(backup) nodes.
+3. The nodes(primary and secondaries) perform the service requested and then send back a reply to the client.
+4. The request is served successfully when the client receives ‘m+1’ replies from different nodes in the network with the same result, where m is the maximum number of faulty nodes allowed.
+
+Security increases as you have more nodes.
+Communication overhead increases at a `k**n` rate - so cost of communication grows Rapidly - making large networks very expensive.
 
 
 
