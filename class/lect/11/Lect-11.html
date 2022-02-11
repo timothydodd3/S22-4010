@@ -723,6 +723,12 @@ ol {
 }
 </style>
 
+<style>
+.markdown-body {
+    x-font-size: 14px;
+}
+</style>
+
 <h1>Lecture 11 - Elliptic Curve</h1>
 
 <h2>Feb 11 2022</h2>
@@ -868,6 +874,8 @@ in our browsers.</p>
 
 <p>This process is called Elliptic Curve Diffie-Hellman.</p>
 
+<div class="pagebreak"></div>
+
 <p>Let&rsquo;s start with <code>4 * 3 = 12</code> and <code>3 * 4 = 12</code>.  This relies on our group law.</p>
 
 <p><center><img src="4x3.png"></center></p>
@@ -891,6 +899,112 @@ of them will compute:</p>
 <p>Each of these values generates the same result, <code>N * MP == M * NP</code>.   The resulting value is
 secret because Bob keeps <code>N</code> a secret and Alice keeps <code>M</code> a secret.  So without sending values
 they can each derive a key.</p>
+
+<h2>Encrypted Communication</h2>
+
+<p>Once we have the ability to share keys - encrypted communication becomes easy.  Perform
+the key share process.  Then take the shared keys and use Aes256 to encrypt the data.  The
+one thing that you have to do is verity that each side authentic - that the public key <code>MP</code>
+and <code>NP</code> really belong to the people that are using the key.</p>
+
+<p>The web-of-trust that is in <code>https</code> provides this.  Let&rsquo;s Encrypt today provides about <sup>3</sup>&frasl;<sub>4</sub>
+of all the <code>https</code> keys in the world.   To get a key you have to prove that the domain
+you are getting the key for is yours.  Suppose your domain is <code>pschlump.com</code>.   Let&rsquo;s Encrypt has a protocol called ACME.  They
+give you a secret and  (big random number) and you put that into a file on your server
+in a know location, <code>http://pschlump.com/.knownsecrets/acme.txt</code>.  Then Let&rsquo;s Encrypt fetches back the secret - from the domain.
+If it matches then you control the domain and they provide you with a set of Public/Private
+keys for the domain.   When somebody visits the site they ask Let&rsquo;s Encrypt for the hash of the public key for <code>pschlump.com</code> and
+ask <code>https://pschlump.com</code> for it&rsquo;s public key.  They hash the key and compare to the results from Let&rsquo;s Encrypt.  If they match
+then then know that you are using the correct public key.</p>
+
+<h2>All of this can be done on integers!</h2>
+
+<p>All of the graphs so far have been continuous - floating point calculations are inaccurate - and when you encrypt you don&rsquo;t
+want inaccurate results.  So&hellip; We can do all of this on integer only values.   This is what is called a <code>finite field</code>
+in math.</p>
+
+<p>Using the same a = -3 and b = 5 with a modulo number of <code>p = 19</code>
+(this is really icky because we use <code>p</code> lower case to be the modulo
+size and <code>P</code> to be the picked shared staring point.   Careful to
+not mix your <code>P</code>s with you <code>p</code>s.  I often wonder if mathematicians
+know that you can declare a variable with more than 1 letter?  In
+other papers this is referred to as <strong>Order(n)</strong> and this is much
+better.)</p>
+
+<p><center><img src="ff-p1.png"></center></p>
+
+<p>we get a set of points that looks like:</p>
+
+<p><center><img src="ff-p2.png"></center></p>
+
+<p>In this <code>y*2 (mod p)</code> is exactly equal to a new point at <code>x**3 - 3x + 5</code>.  Let&rsquo;s try a calculation:</p>
+
+<p>Given a point <code>(11,7)</code> where <code>x = 11 and y == 7</code>, let&rsquo;s start on the y side with, <code>y**2</code>:</p>
+
+<p><center><img src="y__2.png"></center></p>
+
+<p>and <code>x</code> side with:</p>
+
+<p><center><img src="x_calc.png"></center></p>
+
+<p>Visualizing this gives us:</p>
+
+<p><center><img src="ff-p3.png"></center></p>
+
+<h2>Signatures and Validation</h2>
+
+<p>So&hellip; there are a bunch of uses of EC but the use that we want is to <strong>sign</strong> content to prove that the person holding the private key <code>N</code> is who they claim to be.
+In Bitcoin and Ethereum (and our homework) we are using this to verify transactions - this keeps other people from opening the UTxO&rsquo;s that belong to you.</p>
+
+<p>In our examples <code>p</code> the (Order(n)) size of our examples is 19.  It has to be relatively prime and is a prime number in this case.</p>
+
+<p>Our starting point, <code>P</code> is <code>(11,7)</code>.  In the real Ed25519 signature system (Based on Curve25519) the modulo value is the <code>2**255-19</code> and the base point is</p>
+
+<p>x=15112221349535400772501151409588531511454012693041857206046113283949847762202</p>
+
+<p>y=46316835694926478169428394003475163141307993866256225615783033603165251855960</p>
+
+<p>So big numbers&hellip;</p>
+
+<p>Curve25519 also defines the values that give us the exact curve (the &lsquo;a&rsquo; and &lsquo;b&rsquo; values).</p>
+
+<h3>Signing Algorithm</h3>
+
+<p>Input is our public and private keys.   You have to have the private key to sign, you have to have the
+public key to verify.  The agreement on curve, starting point and order need to be in place to start
+the this.</p>
+
+<p>Output is a pair <code>{r,s}</code> that act as a verifiable signature.  In our special case this is actually <code>{r,s,v}</code>
+where v is a 0, 1 (we will get back to <code>v</code> in a moment)</p>
+
+<ol>
+<li>take the message and calculate the hash of the message.  This is a 32 byte Sha256 or Keccak hash of the message.
+<code>h = hash(msg)</code>.</li>
+<li>Generate securely a random number <code>k</code> in the range <code>[1..n-1]</code>.  The value must be from 1 to <code>2**256</code> in our case.  So a 32 byte random value.</li>
+<li>Calculate the random point <code>R = k * P</code> and take its x-coordinate: <code>r = R.x</code></li>
+<li>Calculate the signature proof: <img style="inline:block;" src="proof1.png"></li>
+<li>Return the <code>signature {r, s}</code>.</li>
+</ol>
+
+<h2>Verification Algorithm</h2>
+
+<p>The algorithm to verify a ECDSA signature takes as input the signed message msg + the signature {r, s} produced from the signing algorithm + the public key pubKey, corresponding to the signer&rsquo;s private key. The output is boolean value: valid or invalid signature. The ECDSA signature verify algorithm works as follows (with minor simplifications):</p>
+
+<ol>
+<li>Calculate the message hash, with the same cryptographic hash function used during the signing: <code>h = hash(msg)</code>.   This can also be achieved by passing both the message, the hash and then re-hashing the message and comparing the generated hash with the passed hash.   We will do it this way.</li>
+<li>Calculate the modular inverse of the signature proof: <img style="inline:block;" src="s1.png"></li>
+<li>Recover the random point used during the signing: <code>R' = (h * s1) * G + (r * s1) * pubKey</code></li>
+<li>Take from <code>R'</code> its x-coordinate: <code>r' = R'.x</code></li>
+<li>Calculate the signature validation result by comparing whether <code>r' == r</code></li>
+</ol>
+
+<p>The idea behind signature verification is to recover the point <code>R'</code> using the public key and check whether it is same point <code>R</code>, generated randomly when the message was signed.</p>
+
+<p>This scheme allows for the recovery of the public key from the signature and the message.  This means that a receiver of a signed message will not need to keep a huge table
+of all public keys around.  The disadvantage is that you have to check the recovered key is the correct public key for the account.  In our system (and Ethereum) are accounts
+are the first 24 bytes of the 32 byte public key.  So when we recover the public key we chop it to 24 bytes and compare it to the account number.</p>
+
+<p>Also when we recover a public key we can get 4 different answers.  This is what the <code>v</code> value is used for.</p>
 
 </div>
 
