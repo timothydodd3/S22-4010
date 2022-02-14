@@ -22,6 +22,8 @@ require (
 	golang.org/x/sys v0.0.0-20310615035016-665e8c7367d1 // indirect
 )
 
+replace github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/addr => ../addr
+
 replace github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/block => ../block
 
 replace github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/cli => ../cli
