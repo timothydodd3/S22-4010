@@ -36,3 +36,5 @@ replace github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/mine => ../mine
 replace github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/transactions => ../transactions
 
 replace github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/ansi => ../ansi
+
+replace golang.org/x/crypto => ../../../../../../../golang.org/x/crypto
