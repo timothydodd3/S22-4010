@@ -738,6 +738,21 @@ of the transaction (the spender) is valid.   Both Bitcoin and Ethereum
 use EC cryptography to do this.  Specifically the ECDSA or Elliptic Curve
 Digital Signature Algorithm to do this.</p>
 
+<p>The difference between encryption and digital signatures is that when you
+encrypt a message - you are protecting the content from others.  With
+public/private systems you are also getting some form of assurance that
+the only person reading the message is the intended recipient.</p>
+
+<p>With a digital signature you are not protecting the message content - you
+are providing proof that the originator is really the person that sent
+the message and that the message has not been tampered with.</p>
+
+<p>The &ldquo;signature&rdquo; requires the private key.  The values passed in the signature
+will not reveal the private key, but can be used to derive the public key.
+This allows a receiver to check that the correct message sender.</p>
+
+<p>Bitcoin uses spec256k1 as the &ldquo;curve&rdquo; with a standard starting point.</p>
+
 <h2>Signatures and Validation</h2>
 
 <p>So&hellip; there are a bunch of uses of EC but the use that we want is to <strong>sign</strong> content to prove that the person holding the private key <code>N</code> is who they claim to be.
