@@ -2,7 +2,7 @@ module github.com/Univ-Wyo-Education/S22-4010/homework/04/merkle
 
 go 1.17
 
-require github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/hash v0.0.2
+require github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/hash v0.0.3
 
 require (
 	golang.org/x/crypto v0.0.0-20320112180741-5e0467b6c7ce // indirect

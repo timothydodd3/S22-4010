@@ -3,20 +3,20 @@ module github.com/Univ-Wyo-Education/S22-4010/homework/04/main
 go 1.17
 
 require (
-	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/cli v0.0.2
-	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/config v0.0.2
-	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/lib v0.0.2
+	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/cli v0.0.3
+	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/config v0.0.3
+	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/lib v0.0.3
 	github.com/pschlump/godebug v1.0.4
 )
 
 require (
-	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/addr v0.0.2 // indirect
-	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/block v0.0.2 // indirect
-	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/hash v0.0.2 // indirect
-	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/index v0.0.2 // indirect
-	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/merkle v0.0.2 // indirect
-	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/mine v0.0.2 // indirect
-	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/transactions v0.0.2 // indirect
+	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/addr v0.0.3 // indirect
+	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/block v0.0.3 // indirect
+	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/hash v0.0.3 // indirect
+	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/index v0.0.3 // indirect
+	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/merkle v0.0.3 // indirect
+	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/mine v0.0.3 // indirect
+	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/transactions v0.0.3 // indirect
 	github.com/btcsuite/btcd v0.20.1-beta // indirect
 	github.com/ethereum/go-ethereum v1.10.15 // indirect
 	github.com/mattn/go-colorable v0.1.12 // indirect

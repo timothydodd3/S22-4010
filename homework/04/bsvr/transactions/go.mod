@@ -3,8 +3,8 @@ module github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/transactions
 go 1.17
 
 require (
-	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/addr v0.0.2
-	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/lib v0.0.2
+	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/addr v0.0.3
+	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/lib v0.0.3
 )
 
 require (

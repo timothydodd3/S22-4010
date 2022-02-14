@@ -3,7 +3,7 @@ module github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/lib
 go 1.17
 
 require (
-	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/addr v0.0.2
+	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/addr v0.0.3
 	github.com/ethereum/go-ethereum v1.10.15
 	github.com/pschlump/MiscLib v1.0.3
 	github.com/pschlump/godebug v1.0.4
