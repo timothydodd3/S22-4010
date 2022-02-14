@@ -3,8 +3,8 @@ module github.com/Univ-Wyo-Education/S22-4010/homework/04/mine
 go 1.17
 
 require (
-	github.com/Univ-Wyo-Education/S22-4010/homework/04/block v0.0.1
-	github.com/Univ-Wyo-Education/S22-4010/homework/04/hash v0.0.1
+	github.com/Univ-Wyo-Education/S22-4010/homework/04/block v0.0.2
+	github.com/Univ-Wyo-Education/S22-4010/homework/04/hash v0.0.2
 )
 
 require (
@@ -15,7 +15,7 @@ require (
 	github.com/pschlump/godebug v1.0.4
 	github.com/pschlump/json v0.0.0-20180316172947-0d2e6a308e08 // indirect
 	golang.org/x/crypto v0.0.0-20320112180741-5e0467b6c7ce // indirect
-	golang.org/x/sys v0.0.0-20310615035016-665e8c7367d1 // indirect
+	golang.org/x/sys v0.0.0-20220209214540-3681064d5158
 )
 
 replace github.com/Univ-Wyo-Education/S22-4010/homework/04/block => ../block

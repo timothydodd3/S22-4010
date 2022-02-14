@@ -3,8 +3,8 @@ module github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/index
 go 1.17
 
 require (
-	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/block v0.0.1
-	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/lib v0.0.1
+	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/block v0.0.2
+	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/lib v0.0.2
 )
 
 require (
@@ -14,6 +14,7 @@ require (
 	github.com/pschlump/MiscLib v1.0.3
 	github.com/pschlump/godebug v1.0.4
 	github.com/pschlump/json v0.0.0-20180316172947-0d2e6a308e08 // indirect
+	golang.org/x/sys v0.0.0-20220209214540-3681064d5158
 )
 
 replace github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/block => ../block

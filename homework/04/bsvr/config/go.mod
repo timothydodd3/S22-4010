@@ -19,8 +19,8 @@ replace github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/addr => ../addr
 replace github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/lib => ../lib
 
 require (
-	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/addr v1.0.0
-	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/lib v0.0.0-00010101000000-000000000000
+	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/addr v0.0.2
+	github.com/Univ-Wyo-Education/S22-4010/homework/04/bsvr/lib v0.0.2
 )
 
 require (
@@ -33,5 +33,5 @@ require (
 	github.com/pschlump/godebug v1.0.4 // indirect
 	github.com/pschlump/json v1.12.0 // indirect
 	golang.org/x/crypto v0.0.0-20210322153248-0c34fe9e7dc2 // indirect
-	golang.org/x/sys v0.0.0-20210927094055-39ccf1dd6fa6 // indirect
+	golang.org/x/sys v0.0.0-20220209214540-3681064d5158 // indirect
 )
