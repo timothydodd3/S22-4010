@@ -23,15 +23,15 @@ Transactions.html: Transactions.md
 
 compile:
 	(cd addr; go build)
-	(cd cli; go build)
 	(cd lib; go build)
 	(cd hash; go build)
 	(cd config; go build)
 	(cd block; go build)
-	(cd transactions; go build)
 	(cd index; go build)
+	(cd transactions; go build)
 	(cd mine; go build)
 	(cd merkle; go build)
+	(cd cli; go build)
 	(cd main; go build)
 
 .PHONY: test
