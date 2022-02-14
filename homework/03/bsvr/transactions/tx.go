@@ -25,8 +25,8 @@ type TransactionType struct {
 	SCAddress      addr.AddressType  // Used in HW 6 - Smart Contracts - Address of Contract
 	SCOutputData   string            // Used in HW 6 - Smart Contracts - Output data from contract
 	Account        addr.AddressType  //
-	Signature      lib.SignatureType //	Used in HW 5 - Signature that this is a valid tranaction for this account
-	Message        string            //	Used in HW 5 - Message (hash of original) that signature signs for
+	Signature      lib.SignatureType //	Used in HW 4 - Signature that this is a valid tranaction for this account
+	Message        string            //	Used in HW 4 - Message (hash of original) that signature signs for
 	Comment        string            //
 }
 

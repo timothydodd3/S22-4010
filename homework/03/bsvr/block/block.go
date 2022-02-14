@@ -20,8 +20,8 @@ type BlockType struct {
 	PrevBlockHash hash.BlockHashType              // This is 0 length if this is a "genesis" block
 	Nonce         uint64                          //
 	Seal          hash.SealType                   //
-	MerkleHash    hash.MerkleHashType             // AS-03
-	Tx            []*transactions.TransactionType // Add Transactions to Block Later, (AS-04 will do this)
+	MerkleHash    hash.MerkleHashType             // AS-02
+	Tx            []*transactions.TransactionType // Add Transactions to Block Later, (AS-03 will do this)
 }
 
 // InitGenesisBlock create and return a genesis block.   This is a special
@@ -35,7 +35,7 @@ func InitGenesisBlock() (gb *BlockType) {
 		Nonce:         0,
 		Seal:          []byte{},
 		MerkleHash:    []byte{},
-		Tx:            make([]*transactions.TransactionType, 0, 1), // Add Transactions to Block Later, (AS-04 will do this)
+		Tx:            make([]*transactions.TransactionType, 0, 1), // Add Transactions to Block Later, (AS-03 will do this)
 	}
 	gb.ThisBlockHash = hash.HashOf(SerializeBlock(gb))
 	return
@@ -51,7 +51,7 @@ func InitBlock(ii int, dd string, prev hash.BlockHashType) (bk *BlockType) {
 		Nonce:         0,
 		Seal:          []byte{},
 		MerkleHash:    []byte{},
-		Tx:            make([]*transactions.TransactionType, 0, 1), // Add Transactions to Block Later, (AS-04 will do this)
+		Tx:            make([]*transactions.TransactionType, 0, 1), // Add Transactions to Block Later, (AS-03 will do this)
 	}
 	bk.ThisBlockHash = hash.HashOf(SerializeBlock(bk))
 	return
